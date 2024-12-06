@@ -1,3 +1,276 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* 最優先のテキストカラー設定 */
+* {
+  color: #000000 !important;
+}
+
+:root {
+  /* カりアナログ感のある配色 */
+  --primary-color: #e4572e;     /* ビビッドな朱色 */
+  --secondary-color: #17288c;   /* 昭和の青 */
+  --background-color: #f8f3e6;  /* クリーム色の紙 */
+  --accent-color: #ffc800;      /* 昭和の黄色 */
+  --border-color: #000000;      /* 純黒 */
+  --text-color: #000000;        /* 純黒 */
+}
+
+@layer utilities {
+  .text-default {
+    color: #000000 !important;
+  }
+}
+
+@layer base {
+  html {
+    color: #000000 !important;
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color) !important;
+    font-family: "Shippori Mincho B1", serif;
+    font-weight: 600;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* ノイズテクスチャを追加 */
+    background-image: 
+      url("data:image/png;base64,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");
+  }
+
+  /* すべてのテキスト要素に黒色を適用 */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div,
+  input,
+  textarea,
+  button,
+  a,
+  label {
+    color: #000000 !important;
+  }
+}
+
+/* レトロなボタン */
+.retro-button {
+  background: linear-gradient(45deg, var(--accent-color), #ffdb4d);
+  color: var(--border-color) !important;
+  border: 4px solid var(--border-color);
+  padding: 1rem 2.5rem;
+  font-family: "Shippori Mincho B1", serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  position: relative;
+  border-radius: 0;
+  box-shadow: 
+    6px 6px 0 var(--border-color),
+    inset -2px -2px 0 rgba(0,0,0,0.2);
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  /* ボタンの装 */
+  &::before {
+    content: "▶";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+  }
+}
+
+.retro-button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 
+    3px 3px 0 var(--border-color),
+    inset -1px -1px 0 rgba(0,0,0,0.2);
+}
+
+/* レトロなカード */
+.retro-card {
+  background-color: #ffffff;
+  border: 4px solid var(--border-color);
+  padding: 2rem;
+  margin: 1.5rem;
+  position: relative;
+  border-radius: 0;
+  box-shadow: 
+    8px 8px 0 var(--border-color),
+    12px 12px 0 rgba(0,0,0,0.1);
+}
+
+/* 内側の点線の枠 */
+.retro-card::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 2px dashed var(--border-color);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 左上コーナーの装飾 */
+.retro-card::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-width: 4px 0 0 4px;
+  top: -4px;
+  left: -4px;
+}
+
+/* 右下コーナーの装飾 - 別クラスとして定義 */
+.retro-corner-bottom-right {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-width: 0 4px 4px 0;
+  bottom: -4px;
+  right: -4px;
+}
+
+/* 付箋風のラベル - 別クラスとして定義 */
+.retro-card-label {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--accent-color);
+  padding: 4px 16px;
+  font-weight: bold;
+  transform: rotate(-2deg);
+  box-shadow: 2px 2px 0 var(--border-color);
+  border: 2px solid var(--border-color);
+  z-index: 1;
+}
+
+/* 手書き風の下線 - 別クラスとして定義 */
+.retro-card-divider {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--border-color),
+    var(--border-color) 8px,
+    transparent 8px,
+    transparent 12px
+  );
+  margin: 1rem 0;
+  opacity: 0.5;
+}
+
+/* レトロなヘッダー */
+.retro-header {
+  color: var(--border-color) !important;
+  font-family: "Shippori Mincho B1", serif;
+  font-weight: 900;
+  font-size: 2.5em;
+  text-align: center;
+  margin: 1.5em 0;
+  position: relative;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    3px 3px 0 var(--accent-color),
+    6px 6px 0 rgba(0,0,0,0.2);
+  transform: rotate(-1deg);
+}
+
+/* レトロなテキスト */
+p, span, div {
+  font-family: "Shippori Mincho B1", serif;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+/* レトロなリンク */
+a {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+  border-bottom: 4px solid var(--accent-color);
+  font-weight: 700;
+  padding: 0 4px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+a:hover {
+  background-color: var(--accent-color);
+  color: var(--border-color) !important;
+  transform: rotate(-1deg);
+}
+
+/* 桜の花びらのアニメーション */
+.sakura {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(
+    315deg,
+    rgba(255, 182, 193, 0.8) 10%,    /* より濃いピンク、透明度を0.4から0.8に */
+    rgba(255, 192, 203, 0.6)         /* より濃いピンク、透明度を0.2から0.6に */
+  );
+  border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
+  animation: sakuraFall linear infinite;
+  pointer-events: none;
+  box-shadow: 0 0 5px rgba(255, 182, 193, 0.3);  /* 淡いグローエフェクトを追加 */
+}
+
+@keyframes sakuraFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(2000px) rotate(1000deg);
+    opacity: 0;
+  }
+}
+
+/* 花びらのサイズバリエーション */
+.sakura:nth-child(3n) { 
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(
+    315deg,
+    rgba(255, 192, 203, 0.9) 10%,
+    rgba(255, 182, 193, 0.7)
+  );
+}
+.sakura:nth-child(3n+1) { 
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(
+    315deg,
+    rgba(255, 182, 193, 0.7) 10%,
+    rgba(255, 192, 203, 0.5)
+  );
+}
+
+/* アニメーション時間のバリエーション */
+.sakura:nth-child(2n) { animation-duration: 15s; }
+.sakura:nth-child(3n) { animation-duration: 13s; }
+.sakura:nth-child(4n) { animation-duration: 17s; }
+.sakura:nth-child(5n) { animation-duration: 11s; }
+.sakura:nth-child(6n) { animation-duration: 14s; }

@@ -7,8 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-metallic': 'linear-gradient(to bottom, #2c3e50, #3498db)',
+      colors: {
+        retro: {
+          primary: 'var(--primary-color)',
+          secondary: 'var(--secondary-color)',
+          background: 'var(--background-color)',
+          text: 'var(--text-color)',
+        }
+      },
+      fontFamily: {
+        'press-start': ['"Press Start 2P"', 'cursive'],
+        'courier': ['"Courier New"', 'Courier', 'monospace'],
       },
     },
   },

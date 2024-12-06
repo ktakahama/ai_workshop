@@ -28,19 +28,19 @@ export default function GoalForm({ onSubmit }: GoalFormProps) {
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
           disabled={isSubmitting}
-          className="w-full px-4 py-2 rounded-lg bg-white/20 backdrop-blur-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-50 min-h-[100px]"
+          className="w-full px-4 py-2 rounded-lg bg-white/80 backdrop-blur-lg text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-50 min-h-[100px]"
           placeholder="目的を入力してください（例：引越しの準備）"
           maxLength={200}
         />
         <button
           type="submit"
           disabled={isSubmitting || !goal.trim()}
-          className="px-6 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-lg rounded-lg text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-white/80 hover:bg-white/90 backdrop-blur-lg rounded-lg text-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? 'タスク生成中...' : 'タスクを生成'}
         </button>
       </div>
-      <div className="text-right mt-2 text-white/50 text-sm">
+      <div className="text-right mt-2 text-white/80 text-sm">
         {goal.length}/200文字
       </div>
     </form>

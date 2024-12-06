@@ -91,10 +91,27 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-metallic">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-4xl font-bold text-white text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-300">
-          AIタスクジェネレーター
+    <div className="min-h-screen bg-gradient-metallic relative overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+        {[...Array(100)].map((_, i) => (
+          <div key={i} className="sakura" style={{ 
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * -100}%`,
+            animationDelay: `${-Math.random() * 30}s`
+          }} />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 py-8 max-w-4xl relative" style={{ zIndex: 2 }}>
+        <h1 className="text-center mb-12">
+          <span className="inline-block text-4xl font-medium text-white/90 tracking-[0.25em] mb-3 
+            border-b border-white/20 pb-2 px-8">
+            心得帳
+          </span>
+          <span className="block text-sm text-white/60 font-normal tracking-[0.2em] mt-4 
+            before:content-['—'] before:mr-4 after:content-['—'] after:ml-4">
+            Kokoro no Tobira
+          </span>
         </h1>
         {error && (
           <div className="bg-red-500/50 text-white p-4 rounded-lg mb-4 backdrop-blur-lg">
