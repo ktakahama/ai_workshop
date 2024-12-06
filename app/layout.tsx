@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'メタリックToDo',
-  description: 'Next.jsで作成したToDoアプリ',
+  title: 'AIタスクジェネレーター',
+  description: 'Next.jsで作成したAIタスク生成アプリ',
 }
 
 export default function RootLayout({
@@ -13,7 +13,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body className="min-h-screen bg-gradient-metallic">
+        {children}
+      </body>
     </html>
   )
 }
