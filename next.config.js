@@ -6,6 +6,9 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true
+  },
+  experimental: {
+    appDir: true
   }
 };
 
