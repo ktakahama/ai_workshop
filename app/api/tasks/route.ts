@@ -41,9 +41,13 @@ async function generateTasks(goal: string) {
 
 export async function GET() {
   try {
+    console.log('GET リクエストを受信しました');
+    
     // データベースの初期化を確認
+    console.log('データベースの初期化を開始...');
     await initializeDatabase();
 
+    console.log('タスクの取得を開始...');
     const { rows } = await sql`
       SELECT * FROM tasks 
       ORDER BY 
@@ -54,9 +58,16 @@ export async function GET() {
         END,
         created_at DESC
     `;
+    console.log(`${rows.length}件のタスクを取得しました`);
     return NextResponse.json(rows);
   } catch (error) {
     console.error('データベースエラー:', error);
+    // エラーの詳細情報を出力
+    if (error instanceof Error) {
+      console.error('エラーの種類:', error.name);
+      console.error('エラーメッセージ:', error.message);
+      console.error('スタックトレース:', error.stack);
+    }
     return NextResponse.json(
       { error: 'タスクの取得に失敗しました' },
       { status: 500 }
@@ -66,19 +77,24 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    // データベースの初期化を確認
+    console.log('POST リクエストを受信しました');
+    
     await initializeDatabase();
-
+    
     const { goal } = await request.json();
+    console.log('受信した目的:', goal);
+    
     if (!goal) {
+      console.log('目的が空でリクエストされました');
       return NextResponse.json(
         { error: '目的を入力してください' },
         { status: 400 }
       );
     }
 
-    // タスクを生成
+    console.log('OpenAIでタスク生成を開始...');
     const generatedTasks = await generateTasks(goal);
+    console.log('生成されたタスク:', generatedTasks);
 
     // 生成されたタスクをDBに保存
     const savedTasks = await Promise.all(
@@ -95,6 +111,11 @@ export async function POST(request: Request) {
     return NextResponse.json(savedTasks);
   } catch (error) {
     console.error('タスク生成エラー:', error);
+    if (error instanceof Error) {
+      console.error('エラーの種類:', error.name);
+      console.error('エラーメッセージ:', error.message);
+      console.error('スタックトレース:', error.stack);
+    }
     return NextResponse.json(
       { error: 'タスクの生成と保存に失敗しました' },
       { status: 500 }
