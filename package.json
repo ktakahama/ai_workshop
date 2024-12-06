@@ -12,7 +12,7 @@
   "dependencies": {
     "@vercel/postgres": "latest",
     "critters": "^0.0.25",
-    "next": "13.1.0",
+    "next": "14.1.0",
     "openai": "latest",
     "react": "latest",
     "react-dom": "latest"
