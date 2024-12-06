@@ -3,12 +3,6 @@ const nextConfig = {
   output: "standalone",
   images: {
     disableStaticImages: true
-  },
-  compiler: {
-    styledComponents: true
-  },
-  experimental: {
-    appDir: true
   }
 };
 

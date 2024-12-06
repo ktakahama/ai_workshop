@@ -108,8 +108,8 @@ export default function Home() {
             読み込み中...
           </div>
         ) : (
-          <TaskList 
-            tasks={tasks} 
+          <TaskList
+            tasks={tasks}
             onToggle={toggleTaskCompletion}
           />
         )}
