@@ -12,20 +12,20 @@
   "dependencies": {
     "@vercel/postgres": "latest",
     "critters": "^0.0.25",
-    "next": "latest",
+    "next": "14.1.0",
     "openai": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tailwindcss": "^3.x",
+    "postcss": "^8.x",
+    "autoprefixer": "^10.x"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "latest",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
-    "postcss": "latest",
-    "tailwindcss": "latest",
     "typescript": "^5"
   }
 }

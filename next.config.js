@@ -4,9 +4,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  assetPrefix: process.env.NODE_ENV === 'production' 
-    ? process.env.NEXT_PUBLIC_BASE_PATH 
-    : '',
+  // assetPrefixを使用している場合は削除するか、適切なパスに修正
+  // assetPrefix: process.env.NODE_ENV === 'production' ? '/your-prefix' : '',
 };
 
 module.exports = nextConfig;
